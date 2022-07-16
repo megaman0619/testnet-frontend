@@ -102,12 +102,7 @@ const Content: FC = () => {
       const increment = async () => {
         const provider = await getProvider();
         const program = new anchor.Program(IDL, PROGRAM_ID, provider);
-        // await program.rpc.increment({
-        //   accounts: {
-        //     baseAccount: baseAccount.publicKey
-        //   }
-        // });
-        const resuilt = program.methods.increment().accounts({
+        const result = program.methods.increment().accounts({
             baseAccount: baseAccount.publicKey
         })
         const account = await program.account.baseAccount.fetch(baseAccount.publicKey);
